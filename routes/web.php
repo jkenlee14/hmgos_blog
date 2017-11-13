@@ -27,3 +27,8 @@ Route::put('/dashboard', 'DashboardController@updateCategory');
 
 Route::delete('/dashboard', 'DashboardController@deleteCategory');
 
+Route::get('/categories/', 'CategoryController@index');
+
+Route::get('/categories/{id}', 'CategoryController@show');
+
+

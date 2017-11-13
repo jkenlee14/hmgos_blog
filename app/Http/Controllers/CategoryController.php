@@ -18,8 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('dashboard')->with('categories', $categories);
+        return redirect('/')->with('error', 'Please use a category id');
     }
 
     /**
@@ -41,7 +40,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $categorylist = Category::find($id);
+        $catposts = $categorylist->categoryposts()->paginate(5);
+        // dd($catposts);
+        return view('pages.categories')->with('categoryposts', $catposts)->with('categoryname', $categorylist);
+        // dd($categorylist->categoryposts);
     }
 
     /**

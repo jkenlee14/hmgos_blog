@@ -133,7 +133,7 @@
                             @endif
                     </table>
                     {{-- modal start --}}
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#addCategory">Add Category</a>
+                    <a href="#" class="btn btn-success spacer" data-toggle="modal" data-target="#addCategory">Add Category</a>
                     <!-- Modal -->
                     <div id="addCategory" class="modal fade" role="dialog">
                       <div class="modal-dialog">

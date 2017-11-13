@@ -24,7 +24,7 @@
             		<li><a href="#">Category 6</a></li> --}}
                     @if(count($categorylist)>0)
                         @foreach($categorylist as $category)
-                            <li><a href="{{$category->id}}">{{$category->name}}</a></li>
+                            <li><a href="/categories/{{$category->id}}">{{$category->name}}</a></li>
                         @endforeach
                     @else
                         <li>No Categories!</li>

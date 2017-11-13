@@ -9,6 +9,14 @@ main {
    background-clip: content-box;
 }
 
+.margintop {
+    margin-top: 15px;
+}
+
+.categorywell:first-child{
+    margin-top: 15px;
+}
+
 .centerme {
     margin: 0 auto;
 }
@@ -129,8 +137,8 @@ abbr[title], acronym[title] {
 /*Carousel Content*/
 
 .carousel-inner > .item > img {
-  min-height: 75vh;
-  max-height: 75vh;
+  min-height: 400px;
+  max-height: 400px;
   width: auto;
   margin: 0 auto;
 }
@@ -260,3 +268,11 @@ color: white;
 }
 
 /*/footer*/
+
+/*links*/
+.graylink{
+    color:lightgray;
+}
+ 
+
+/*/links*/

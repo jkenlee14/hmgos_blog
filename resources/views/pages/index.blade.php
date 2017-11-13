@@ -6,6 +6,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">{{-- interior row --}}
 				<div class="col-md-9 carouselcontainer"> {{-- for carousel --}}
+					<h1>Random Articles</h1>
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						  <!-- Indicators -->
 						  <ol class="carousel-indicators">
@@ -27,7 +28,7 @@
 						  			@endif
 						  					<img class="image-responsive" src="{{asset('assets/images/' . $carousel->cover_image)}}">
 						  					<div class="carousel-caption">
-						  						<h3><a href="/posts/{{$carousel->id}}">{{$carousel->title}}</a></h3>
+						  						<h3><a class="graylink" href="/posts/{{$carousel->id}}">{{$carousel->title}}</a></h3>
 						  						<p>{!!mb_strimwidth(strip_tags($carousel->body), 0, 20, '...')!!}</p>
 						  					</div>
 						  				</div>
@@ -68,7 +69,7 @@
 														{{-- <div class="panel-heading">
 														</div> --}}
 														<div class="panel-body blogpost">
-															<a href="/posts/{{$post->id}}"><h4>{{$post->title}}</h4></a>
+															<a class="graylink" href="/posts/{{$post->id}}"><h4>{{$post->title}}</h4></a>
 															<img class="image-responsive postimage" src="{{asset('assets/images/' . $post->cover_image)}}">
 															<p class="">{!!mb_strimwidth(strip_tags($post->body), 0, 60, '...')!!}</p>
 														</div>

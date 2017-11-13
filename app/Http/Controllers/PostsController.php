@@ -164,7 +164,7 @@ class PostsController extends Controller
             if ($post->cover_image!='noimage.svg') {
             //Delete the image
             // Storage::delete('public/cover_images/' .$post->cover_image);
-                unlink(public_path('assets/images/' . $post->cover_image));
+                // unlink(public_path('assets/images/' . $post->cover_image));
             }
             $post->cover_image = $fileNameToStore;
          }
