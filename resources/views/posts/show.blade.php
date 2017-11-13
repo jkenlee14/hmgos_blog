@@ -18,7 +18,7 @@
 			<hr>
 			<small>posted by: {{$post->user->name}}</small> &nbsp;
 			@if(count($post->category->name)>0)
-				<small>posted in: {{$post->category->name}}</small>
+				<small>posted in: <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a></small>
 			@else
 				<small>posted in: N/a</small>
 			@endif

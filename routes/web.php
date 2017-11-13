@@ -31,4 +31,14 @@ Route::get('/categories/', 'CategoryController@index');
 
 Route::get('/categories/{id}', 'CategoryController@show');
 
+Route::get('/dashboard/tags', 'TagsController@index');
+
+Route::post('/dashboard/tags', 'DashboardController@storeTag');
+
+Route::put('/dashboard/tags', 'DashboardController@updateTag');
+
+Route::delete('/dashboard/tags', 'DashboardController@deleteTag');
+
+
+
 

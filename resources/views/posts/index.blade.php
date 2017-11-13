@@ -18,7 +18,11 @@
 									<small>edited: <abbr title="{{$post->updated_at}}">{{$post->updated_at->diffForHumans()}}</abbr></small>
 								@endif
 								<small>posted by: {{$post->user->name}}</small>
-								<small>posted in: {{$post->category->name}}</small>
+								@if(count($post->category->name)>0)
+									<small>posted in: <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a></small>
+								@else
+									<small>posted in: N/a</small>
+								@endif
 							</div>
 						</div>
 					</div>

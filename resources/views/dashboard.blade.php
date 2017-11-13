@@ -129,7 +129,7 @@
                                 @endforeach
                                 </tr>
                             @else
-                                <p>No Categories! Create one!</p>
+                                <p class="margintop">No Categories! Create one!</p>
                             @endif
                     </table>
                     {{-- modal start --}}
@@ -167,12 +167,112 @@
 
                 </div>
                 <div id="tags" class="tab-pane fade">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                   <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>Tags</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        @if(count($tags)>0)
+                            @foreach($tags as $tag)
+                            <tr>
+                                <td class="text-center">{{$tag->name}}</td>
+                                <td class="text-center"><button class="btn btn-info" data-toggle="modal" data-target="#UpdateTag{{$tag->id}}">Edit</button>
+                                        {{-- Modal start (update category) --}}
+                                        <div id="UpdateTag{{$tag->id}}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                {{-- Modal Content --}}
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Edit Tag</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {!! Form::open(['action' => ['DashboardController@updateTag', $tag->id ], 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
+                                                            <div class="form-group">
+                                                                {{Form::label('updatetagname', 'Tag Name')}}
+                                                                {{Form::text('updatetagname', $tag->name, ['class'=>'form-control'])}}
+                                                            {{Form::hidden('_method', 'PUT')}}
+                                                            {{Form::hidden('id', $tag->id)}}
+                                                            </div>
+                                                            {{Form::submit('Edit Tag', ['class' => 'btn btn-primary submitbutton'])}}
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> {{-- Modal end (update category) --}}
+                                    </td>
+                                    {{-- spacer --}}
+
+                                <td class="text-center">
+                                    <!-- Trigger the modal with a button -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteTag{{$tag->id}}">Delete</button>
+                                        <!-- Modal -->
+                                        <div id="DeleteTag{{$tag->id}}" class="modal fade" role="dialog">
+                                          <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Delete Tag</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                <p>Are you sure you want to delete this tag?</p>
+                                              </div>
+                                              <div class="modal-footer">
+                                                {!!Form::open(['action'=>['DashboardController@deleteTag', $tag->id], 'method' => 'POST', 'class' => 'pull-left'])!!}
+                                                    {{Form::hidden('_method', 'DELETE')}}
+                                                    {{Form::hidden('id', $tag->id)}}
+                                                    {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
+                                                {!!Form::close()!!}
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </td>
+                            </tr>
+
+                            @endforeach
+                        @else
+                            <p class="margintop">No tags! create one!</p>
+                        @endif
+                   </table>
+                   {{-- modal start --}}
+                    <a href="#" class="btn btn-success spacer" data-toggle="modal" data-target="#addTag">Add Tag</a>
+                    <!-- Modal -->
+                    <div id="addTag" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Category</h4>
+                          </div>
+                          <div class="modal-body">
+                            {!! Form::open(['action'=>'DashboardController@storeTag', 'method' => 'POST']) !!}
+                                <div class="form-group">
+                                    {{Form::label('tagname', 'Tag Name')}}
+                                    {{Form::text('tagname', '', ['class'=>'form-control', 'placeholder' => 'Tag Name'])}}
+                                </div>
+                                {{Form::submit('Submit Tag', ['class' => 'btn btn-primary submitbutton'])}}
+                            {!! Form::close() !!}
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {{-- divider --}}
+
+
                 </div>
             </div>
 
