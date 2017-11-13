@@ -11,7 +11,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
-        "unisharp/laravel-ckeditor": "^4.6"
+        "unisharp/laravel-ckeditor": "^4.6",
+        "ext-gd": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -55,9 +56,6 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    },
-    "require": {
-        "ext-gd": "*"
     }
 }
 
