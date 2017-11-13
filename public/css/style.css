@@ -67,7 +67,13 @@ main {
 .comments{
     text-align: center;
 }
-
+.homeheading{
+    height: 80px;
+    background: white!important;
+    border-bottom: none!important;
+    /*background-color: red;*/
+    /*color: white;*/
+}
 .blogpost{
     /*border: 1px solid black;*/
     /*margin-right: 1%;*/
@@ -76,9 +82,14 @@ main {
     /*box-sizing: border-box;*/
     text-align: justify;
     text-justify: inter-word;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 200px;
+    max-height: 200px;
     /*padding: 1%;*/
+}
+
+.blogpost > a{
+    text-align: initial;
+    text-justify: none;
 }
 
 nav{
@@ -273,6 +284,13 @@ color: white;
 .graylink{
     color:lightgray;
 }
+
+.blacklink{
+    color:black;
+}
  
+.graylink:hover, .blacklink:hover{
+    color:darkgray!important;
+}
 
 /*/links*/

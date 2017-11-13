@@ -18,6 +18,10 @@
 					{!!Form::select('category_id', $category_list, '', ['class' => 'form-control'])!!}
 				</div>
 				<div class="form-group">
+					{{Form::label('tags', 'Tags')}}
+					{!!Form::select('tags[]', $tag_list, '' , ['class' => 'form-control customselect', 'multiple' => 'multiple'])!!}
+				</div>
+				<div class="form-group">
 					{{Form::file('cover_image')}}
 				</div>
 				{{Form::submit('Submit Post', ['class' => 'btn btn-primary submitbutton'])}}
@@ -25,4 +29,10 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('.customselect').select2();
+		});
+	</script>
+	
 @endsection

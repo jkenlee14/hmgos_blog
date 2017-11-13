@@ -14,14 +14,29 @@
 			<br><br>
 			<img class="image-responsive postimagefull" src="{{asset('assets/images/' . $post->cover_image)}}">
 			<br><br>
+			<div class="col-md-10 col-md-offset-1">
 			{!! $post->body !!}
-			<hr>
-			<small>posted by: {{$post->user->name}}</small> &nbsp;
-			@if(count($post->category->name)>0)
-				<small>posted in: <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a></small>
+			</div>
+			<br>
+			<div class="pull-left">
+				<small>posted by: {{$post->user->name}}</small> &nbsp;
+				@if(count($post->category->name)>0)
+					<small>posted in: <a href="/categories/{{$post->category->id}}">{{$post->category->name}}</a></small>
+				@else
+					<small>posted in: N/a</small>
+				@endif
+			</div>
+
+			<div class="pull-right">
+				@if(count($post->tags)>0)
+				@foreach($post->tags as $tag)
+					<h4 class="label label-default">{{$tag->name}}</h4>
+				@endforeach
 			@else
-				<small>posted in: N/a</small>
+				<h4 class="label label-default">No tags</h4>
 			@endif
+			</div>
+			<br>
 			<hr>
 			@if (!Auth::guest())
 				@if (Auth::user()->id == $post->user_id)

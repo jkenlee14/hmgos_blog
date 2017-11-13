@@ -18,6 +18,10 @@
 					{!!Form::select('category_id', $category_list, $post->category_id , ['class' => 'form-control'])!!}
 				</div>
 				<div class="form-group">
+					{{Form::label('tags', 'Tags')}}
+					{!!Form::select('tags[]', $tag_list, $tag_selected , ['class' => 'form-control customselect', 'multiple' => 'multiple'])!!}
+				</div>
+				<div class="form-group">
 					{{Form::file('cover_image')}}
 				</div>
 				{{Form::hidden('_method', 'PUT')}}
@@ -26,4 +30,11 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('.customselect').select2();
+		});
+	</script>
+
 @endsection

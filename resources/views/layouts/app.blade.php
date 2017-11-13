@@ -20,7 +20,9 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
-    <link href="{{ asset('css/rotating-card.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/rotating-card.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
@@ -58,6 +60,7 @@
             </script>
     <script type="text/javascript" src="{{ asset('js/jquery-1.10.2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/select2.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"><script>
     <script type="text/javascript">
     $().ready(function(){
@@ -78,6 +81,8 @@
             $card.addClass('hover');
         }
     }
+
+    
 </script>
      @include('inc.footer')
 </body>

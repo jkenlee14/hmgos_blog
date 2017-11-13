@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use App\Category;
+use App\Tag;
 use Image;
 
 class PostsController extends Controller
@@ -39,8 +40,9 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response     */
     public function create()
     {
+        $tag_list = Tag::pluck('name', 'id');
         $category_list = Category::pluck('name', 'id');
-        return view('posts.create')->with('category_list', $category_list);
+        return view('posts.create')->with('category_list', $category_list)->with('tag_list', $tag_list);
     }
 
     /**
@@ -88,6 +90,7 @@ class PostsController extends Controller
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
         $post->save();
+        $post->tags()->sync($request->tags, false);
 
         return redirect('/posts')->with('success', 'Post created!');
     }
@@ -113,13 +116,16 @@ class PostsController extends Controller
     public function edit($id)
     {
         $category_list = Category::pluck('name', 'id');
+        $tag_list = Tag::pluck('name', 'id');
+        $tag_selected = Tag::pluck('id');
+        // return $tag_selected;
         // dd($category_list);
         $post = Post::find($id);
         //Check for correct user
         if (auth()->user()->id!==$post->user_id) {
             return redirect('posts')->with('error', 'You do not have permission to do this action!');
         }
-        return view('posts.edit')->with('post', $post)->with('category_list', $category_list);
+        return view('posts.edit')->with('post', $post)->with('category_list', $category_list)->with('tag_list', $tag_list)->with('tag_selected', $tag_selected);
     }
 
     /**
@@ -169,6 +175,7 @@ class PostsController extends Controller
             $post->cover_image = $fileNameToStore;
          }
         $post->save();
+        $post->tags()->sync($request->tags, true);
 
         return redirect('/posts')->with('success', 'Post Updated!');
     }
@@ -182,6 +189,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $post->tags()->detach();
         //Check for correct user
         if (auth()->user()->id!==$post->user_id) {
             return redirect('posts')->with('error', 'You do not have permission to do this action!');

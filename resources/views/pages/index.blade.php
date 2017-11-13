@@ -66,10 +66,11 @@
 										@foreach($posts as $post)
 											<div class="col-md-4 spacer">
 													<div class="panel panel-default">
-														{{-- <div class="panel-heading">
-														</div> --}}
+														<div class="panel-heading homeheading">
+															<a class="blacklink" href="/posts/{{$post->id}}"><h4>{{$post->title}}</h4></a>
+														</div>
 														<div class="panel-body blogpost">
-															<a class="graylink" href="/posts/{{$post->id}}"><h4>{{$post->title}}</h4></a>
+															
 															<img class="image-responsive postimage" src="{{asset('assets/images/' . $post->cover_image)}}">
 															<p class="">{!!mb_strimwidth(strip_tags($post->body), 0, 60, '...')!!}</p>
 														</div>
